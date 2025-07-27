@@ -14,7 +14,7 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
   NoteModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return NoteModel(
       title: fields[0] as String,
