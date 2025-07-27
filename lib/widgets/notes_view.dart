@@ -38,18 +38,21 @@ class NotesView extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(children: [Expanded(child: NotesListView())]),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            builder: (context) {
-              return AddNoteBottomSheet();
-            },
-          );
-        },
-        shape: CircleBorder(),
-        backgroundColor: Color(0xff60ffd7),
-        child: Icon(FontAwesomeIcons.plus, color: Colors.black),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(8),
+        child: FloatingActionButton(
+          onPressed: () {
+            showModalBottomSheet(
+              context: context,
+              builder: (context) {
+                return AddNoteBottomSheet();
+              },
+            );
+          },
+          shape: CircleBorder(),
+          backgroundColor: Color(0xff60ffd7),
+          child: Icon(FontAwesomeIcons.plus, color: Colors.black),
+        ),
       ),
     );
   }
