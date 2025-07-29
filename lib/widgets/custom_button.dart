@@ -9,11 +9,11 @@ class CustomButton extends StatelessWidget {
     return Container(
       height: 45,
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: kPrimaryColor,
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
-      child: Center(
+      child: const Center(
         child: Text(
           "Add",
           style: TextStyle(

@@ -16,16 +16,16 @@ class CustomTextField extends StatelessWidget {
         decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: Colors.grey),
           ),
           hintText: hint,
-          hintStyle: TextStyle(color: kPrimaryColor),
-          focusedBorder: OutlineInputBorder(
+          hintStyle: const TextStyle(color: kPrimaryColor),
+          focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: kPrimaryColor),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: Colors.grey),
           ),
         ),
       ),

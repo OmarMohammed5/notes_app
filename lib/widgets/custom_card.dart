@@ -14,7 +14,7 @@ class CustomCard extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return EditNoteView();
+              return const EditNoteView();
             },
           ),
         );
@@ -29,9 +29,9 @@ class CustomCard extends StatelessWidget {
         ),
         child: Column(
           children: [
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
+            const SizedBox(height: 20),
+            const Padding(
+              padding: EdgeInsets.only(left: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -46,7 +46,7 @@ class CustomCard extends StatelessWidget {
                   ),
                   SizedBox(width: 152),
                   Padding(
-                    padding: const EdgeInsets.only(top: 40),
+                    padding: EdgeInsets.only(top: 40),
                     child: Icon(
                       FontAwesomeIcons.trash,
                       size: 22,
@@ -56,11 +56,11 @@ class CustomCard extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(width: 30),
+                const SizedBox(width: 30),
                 Text(
                   "Build your career with",
                   style: TextStyle(
@@ -73,7 +73,7 @@ class CustomCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(width: 30),
+                const SizedBox(width: 30),
                 Text(
                   "Omar Mohammed",
                   style: TextStyle(
@@ -83,7 +83,7 @@ class CustomCard extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 60),
+            const SizedBox(height: 60),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [

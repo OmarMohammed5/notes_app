@@ -6,6 +6,6 @@ class NotesViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NotesView();
+    return const NotesView();
   }
 }

@@ -13,7 +13,7 @@ class NotesView extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            const Text(
               "Notes",
               style: TextStyle(
                 fontSize: 30,
@@ -27,15 +27,15 @@ class NotesView extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(16),
-                color: Color(0xff323233),
+                color: const Color(0xff323233),
               ),
-              child: Icon(Icons.search, size: 25, color: Colors.white),
+              child: const Icon(Icons.search, size: 25, color: Colors.white),
             ),
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10),
         child: Column(children: [Expanded(child: NotesListView())]),
       ),
       floatingActionButton: Padding(
@@ -46,13 +46,13 @@ class NotesView extends StatelessWidget {
               isScrollControlled: true,
               context: context,
               builder: (context) {
-                return AddNoteBottomSheet();
+                return const AddNoteBottomSheet();
               },
             );
           },
-          shape: CircleBorder(),
-          backgroundColor: Color(0xff60ffd7),
-          child: Icon(FontAwesomeIcons.plus, color: Colors.black),
+          shape: const CircleBorder(),
+          backgroundColor: const Color(0xff60ffd7),
+          child: const Icon(FontAwesomeIcons.plus, color: Colors.black),
         ),
       ),
     );

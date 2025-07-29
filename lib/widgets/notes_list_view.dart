@@ -9,11 +9,11 @@ class NotesListView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
       child: ListView.builder(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         padding: EdgeInsets.zero,
         itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4),
+          return const Padding(
+            padding: EdgeInsets.symmetric(vertical: 4),
             child: CustomCard(color: Color(0xffFDCC7D)),
           );
         },

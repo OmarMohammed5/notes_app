@@ -12,7 +12,7 @@ class EditNoteView extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            const Text(
               "Edit Note",
               style: TextStyle(
                 fontSize: 30,
@@ -26,15 +26,15 @@ class EditNoteView extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(16),
-                color: Color(0xff323233),
+                color: const Color(0xff323233),
               ),
-              child: Icon(Icons.check, size: 25, color: Colors.white),
+              child: const Icon(Icons.check, size: 25, color: Colors.white),
             ),
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 30),
+      body: const Padding(
+        padding: EdgeInsets.only(top: 30),
         child: Column(
           children: [
             SizedBox(),
