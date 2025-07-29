@@ -24,6 +24,7 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
         child: BlocConsumer<AddNoteCubit, AddNoteState>(
           listener: (context, state) {
             if (state is AddNoteFailure) {
+              // ignore: avoid_print
               print("failled ${state.errorMessage}");
             }
             if (state is AddNoteSuccess) {
@@ -32,8 +33,11 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
           },
           builder: (context, state) {
             return ModalProgressHUD(
-              inAsyncCall: state is AddNoteLoading ? true : false,
-              child: const SingleChildScrollView(child: AddNoteForm()),
+              inAsyncCall: false,
+              child: AbsorbPointer(
+                absorbing: state is AddNoteLoading ? true : false,
+                child: const SingleChildScrollView(child: AddNoteForm()),
+              ),
             );
           },
         ),
