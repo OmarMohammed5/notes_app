@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_note_view.dart';
+import 'package:intl/intl.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({super.key, required this.color});
+  const CustomCard({super.key, required this.color, required this.note});
 
   final Color color;
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
+    String formattedDate = DateFormat(
+      'dd MMM yyyy',
+    ).format(DateTime.parse(note.date));
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -25,81 +31,54 @@ class CustomCard extends StatelessWidget {
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(18),
-          color: color,
+          color: Color(note.color),
         ),
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            const Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(width: 20),
-                  Text(
-                    "Flutter Tips",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 26,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  SizedBox(width: 152),
-                  Padding(
-                    padding: EdgeInsets.only(top: 40),
-                    child: Icon(
-                      FontAwesomeIcons.trash,
-                      size: 22,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 5),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const SizedBox(width: 30),
-                Text(
-                  "Build your career with",
-                  style: TextStyle(
-                    color: Colors.black.withOpacity(0.4),
-                    fontSize: 18,
-                  ),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 16, bottom: 24, top: 24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              ListTile(
+                title: Text(
+                  note.title,
+                  style: const TextStyle(fontSize: 26, color: Colors.black),
                 ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const SizedBox(width: 30),
-                Text(
-                  "Omar Mohammed",
-                  style: TextStyle(
-                    color: Colors.black.withOpacity(0.4),
-                    fontSize: 18,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 60),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 25),
+                subtitle: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
                   child: Text(
-                    "July 27,2025",
+                    note.subTitle,
                     style: TextStyle(
+                      fontSize: 18,
                       color: Colors.black.withOpacity(0.4),
-                      fontSize: 16,
                     ),
                   ),
                 ),
-              ],
-            ),
-          ],
+                trailing: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    FontAwesomeIcons.trash,
+                    color: Colors.black,
+                    size: 28,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: Text(
+                      formattedDate,
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black.withOpacity(0.4),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
