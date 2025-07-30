@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/add_note_cubit/notes_cubit/notes_cubit.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/custom_text_field.dart';
 
-class EditNoteView extends StatelessWidget {
-  const EditNoteView({super.key});
+class EditNoteView extends StatefulWidget {
+  const EditNoteView({super.key, required this.note});
 
+  final NoteModel note;
+
+  @override
+  State<EditNoteView> createState() => _EditNoteViewState();
+}
+
+class _EditNoteViewState extends State<EditNoteView> {
+  String? title, content;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,19 +39,39 @@ class EditNoteView extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 color: const Color(0xff323233),
               ),
-              child: const Icon(Icons.check, size: 25, color: Colors.white),
+              child: IconButton(
+                onPressed: () {
+                  widget.note.title = title ?? widget.note.title;
+                  widget.note.subTitle = content ?? widget.note.subTitle;
+                  widget.note.save();
+                  BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                  Navigator.pop(context);
+                },
+                icon: const Icon(Icons.check),
+              ),
             ),
           ],
         ),
       ),
-      body: const Padding(
-        padding: EdgeInsets.only(top: 30),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 30),
         child: Column(
           children: [
-            SizedBox(),
-            CustomTextField(hint: "Title"),
-            SizedBox(height: 20),
-            CustomTextField(hint: "Content", maxLines: 5),
+            const SizedBox(),
+            CustomTextField(
+              onChanged: (value) {
+                title = value;
+              },
+              hint: "Title",
+            ),
+            const SizedBox(height: 20),
+            CustomTextField(
+              onChanged: (value) {
+                content = value;
+              },
+              hint: "Content",
+              maxLines: 5,
+            ),
           ],
         ),
       ),
