@@ -12,11 +12,9 @@ class NotesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<NotesCubit, NotesState>(
       builder: (context, state) {
-        // استدعاء fetchAllNotes لو notes لسه null
         final cubit = BlocProvider.of<NotesCubit>(context);
         if (cubit.notes == null) {
           cubit.fetchAllNotes();
-          // نعرض شاشة تحميل مؤقتة لحد ما يتم تعبئة notes
           return const Center(
             child: CircularProgressIndicator(color: Colors.white),
           );

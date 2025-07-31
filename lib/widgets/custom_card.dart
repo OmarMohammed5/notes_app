@@ -26,14 +26,14 @@ class CustomCard extends StatelessWidget {
         );
       },
       child: Container(
-        height: 250,
+        height: 220,
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18),
           color: Color(note.color),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(26),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
