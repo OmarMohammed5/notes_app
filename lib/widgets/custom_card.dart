@@ -52,6 +52,29 @@ class CustomCard extends StatelessWidget {
                     onPressed: () {
                       note.delete();
                       BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: const Row(
+                            children: [
+                              Icon(Icons.check),
+                              SizedBox(width: 20),
+                              Text(
+                                "Note deleted successfuly",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                          duration: const Duration(seconds: 2),
+                          backgroundColor: Colors.red.shade400,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      );
                     },
                     icon: const Icon(
                       FontAwesomeIcons.trash,

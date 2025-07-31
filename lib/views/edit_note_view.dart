@@ -47,6 +47,30 @@ class _EditNoteViewState extends State<EditNoteView> {
                   widget.note.save();
                   BlocProvider.of<NotesCubit>(context).fetchAllNotes();
                   Navigator.pop(context);
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: const Row(
+                        children: [
+                          Icon(Icons.check),
+                          SizedBox(width: 20),
+                          Text(
+                            "Note updatd successfuly",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      duration: const Duration(seconds: 2),
+                      backgroundColor: Colors.green.shade500,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  );
                 },
                 icon: const Icon(Icons.check),
               ),
