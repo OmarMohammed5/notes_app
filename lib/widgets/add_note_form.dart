@@ -56,9 +56,10 @@ class _AddNoteFormState extends State<AddNoteForm> {
                       formKey.currentState!.save();
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
+                          behavior: SnackBarBehavior.floating,
                           content: const Row(
                             children: [
-                              Icon(Icons.check),
+                              Icon(Icons.check, color: Colors.white),
                               SizedBox(width: 20),
                               Text(
                                 "Note added successfuly",

@@ -10,9 +10,10 @@ class ColorItem extends StatelessWidget {
   final Color color;
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return isActive
         ? CircleAvatar(
-            backgroundColor: Colors.white,
+            backgroundColor: isDark ? Colors.white : Colors.black26,
             radius: 38,
             child: CircleAvatar(radius: 32, backgroundColor: color),
           )

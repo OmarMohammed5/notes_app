@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/constant.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -29,16 +28,17 @@ class CustomTextField extends StatelessWidget {
           }
         },
         maxLines: maxLines,
-        cursorColor: kPrimaryColor,
+        cursorColor: Colors.teal.shade400,
         decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(color: Colors.grey),
           ),
           hintText: hint,
-          hintStyle: const TextStyle(color: kPrimaryColor),
-          focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: kPrimaryColor),
+          hintStyle: TextStyle(color: Colors.teal.shade400),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.teal.shade700),
+            borderRadius: BorderRadius.circular(10),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),

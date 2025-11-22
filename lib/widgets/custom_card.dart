@@ -14,6 +14,7 @@ class CustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     String formattedDate = DateFormat(
       'dd MMM yyyy',
     ).format(DateTime.parse(note.date));
@@ -43,10 +44,11 @@ class CustomCard extends StatelessWidget {
                 Expanded(
                   child: Text(
                     note.title,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 26,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
+                      color: isDark ? Colors.black87 : Colors.white,
+                      // color: Colors.black,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
@@ -57,6 +59,7 @@ class CustomCard extends StatelessWidget {
 
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
+                        behavior: SnackBarBehavior.floating,
                         content: const Row(
                           children: [
                             Icon(Icons.check, color: Colors.white),
@@ -79,9 +82,9 @@ class CustomCard extends StatelessWidget {
                       ),
                     );
                   },
-                  icon: const Icon(
+                  icon: Icon(
                     FontAwesomeIcons.trash,
-                    color: Colors.black,
+                    color: isDark ? Colors.black : Colors.white,
                     size: 22,
                   ),
                 ),
@@ -96,7 +99,9 @@ class CustomCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 height: 1.4,
-                color: Colors.black.withValues(alpha: 0.6),
+                color: isDark
+                    ? Colors.black.withValues(alpha: 0.6)
+                    : Colors.white70,
               ),
             ),
 
@@ -109,7 +114,9 @@ class CustomCard extends StatelessWidget {
                 formattedDate,
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.black.withValues(alpha: 0.5),
+                  color: isDark
+                      ? Colors.black.withValues(alpha: 0.5)
+                      : Colors.white70,
                 ),
               ),
             ),

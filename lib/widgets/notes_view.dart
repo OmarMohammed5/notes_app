@@ -1,6 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hugeicons/hugeicons.dart';
+import 'package:notes_app/theme_cubit/cubit/theme_cubit.dart';
+import 'package:notes_app/views/settings_view.dart';
 import 'package:notes_app/widgets/add_note_bottom_sheet.dart';
 import 'package:notes_app/widgets/notes_list_view.dart';
 
@@ -9,33 +12,58 @@ class NotesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeCubit = context.watch<ThemeCubit>();
+    final isDarkMode = themeCubit.state == ThemeMode.dark;
+    final backgroundColor = isDarkMode ? Colors.black : Colors.grey[200];
+    // final cardColor = isDarkMode ? Colors.grey.shade900 : Colors.white;
+    // final textColor = isDarkMode ? Colors.white : Colors.black87;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      backgroundColor: backgroundColor,
       appBar: AppBar(
+        elevation: 0,
+        backgroundColor: backgroundColor,
+        toolbarHeight: 70,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              "Notes",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-              ),
+            // ============ Logo + Title ============
+            Row(
+              children: [
+                const Center(child: Icon(Icons.note_alt_outlined, size: 30)),
+                const SizedBox(width: 12),
+                Text(
+                  "Noota",
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.w500,
+                    color: isDarkMode ? Colors.white : Colors.black87,
+                  ),
+                ),
+              ],
             ),
-            Container(
-              height: 45,
-              width: 45,
-              decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(16),
-                color: const Color(0xff323233),
-              ),
-              child: const Icon(
-                CupertinoIcons.search,
-                size: 25,
-                color: Colors.white,
-              ),
+
+            // ============ Icons Section ============
+            Row(
+              children: [
+                // Settings Icon
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const SettingsView(),
+                      ),
+                    );
+                  },
+                  child: const Center(
+                    child: HugeIcon(
+                      icon: HugeIcons.strokeRoundedSettings01,
+                      size: 28,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

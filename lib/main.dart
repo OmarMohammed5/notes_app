@@ -7,6 +7,8 @@ import 'package:notes_app/add_note_cubit/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/constant.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/simple_bloc_observer.dart';
+import 'package:notes_app/theme/app_themes.dart';
+import 'package:notes_app/theme_cubit/cubit/theme_cubit.dart';
 import 'package:notes_app/views/notes_view_body.dart';
 
 void main() async {
@@ -15,7 +17,14 @@ void main() async {
   Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox<NoteModel>(kNotesBox);
   runApp(
-    BlocProvider(create: (context) => NotesCubit(), child: const NotesApp()),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => NotesCubit()),
+        BlocProvider(create: (context) => NotesCubit()..fetchAllNotes()),
+        BlocProvider(create: (context) => ThemeCubit()),
+      ],
+      child: const NotesApp(),
+    ),
   );
 }
 
@@ -24,13 +33,16 @@ class NotesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NotesCubit()..fetchAllNotes(),
-      child: MaterialApp(
-        theme: ThemeData(brightness: Brightness.dark),
-        debugShowCheckedModeBanner: false,
-        home: const NotesViewBody(),
-      ),
+    return BlocBuilder<ThemeCubit, ThemeMode>(
+      builder: (context, themeMode) {
+        return MaterialApp(
+          themeMode: themeMode,
+          theme: AppThemes.light,
+          darkTheme: AppThemes.dark,
+          debugShowCheckedModeBanner: false,
+          home: const NotesViewBody(),
+        );
+      },
     );
   }
 }
