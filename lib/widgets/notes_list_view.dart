@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import 'package:notes_app/add_note_cubit/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/add_note_cubit/notes_cubit/notes_state.dart';
 import 'package:notes_app/models/note_model.dart';
@@ -21,7 +22,11 @@ class NotesListView extends StatelessWidget {
         }
 
         List<NoteModel> notes = cubit.notes!;
-
+        if (notes.isEmpty) {
+          return Center(
+            child: Lottie.asset("assets/empty.json", height: 300, width: 300),
+          );
+        }
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 16),
           child: ListView.builder(
