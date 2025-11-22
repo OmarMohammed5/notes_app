@@ -18,7 +18,7 @@ class NotesView extends StatelessWidget {
               "Notes",
               style: TextStyle(
                 fontSize: 30,
-                fontWeight: FontWeight.w400,
+                fontWeight: FontWeight.w600,
                 color: Colors.white,
               ),
             ),
