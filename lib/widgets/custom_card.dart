@@ -26,91 +26,94 @@ class CustomCard extends StatelessWidget {
         );
       },
       child: Container(
-        height: 220,
         width: double.infinity,
+        padding: const EdgeInsets.all(20),
+        margin: const EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18),
           color: Color(note.color),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(26),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Title + Delete Icon
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Text(
-                      note.title,
-                      style: const TextStyle(fontSize: 26, color: Colors.black),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      note.delete();
-                      BlocProvider.of<NotesCubit>(context).fetchAllNotes();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: const Row(
-                            children: [
-                              Icon(Icons.check),
-                              SizedBox(width: 20),
-                              Text(
-                                "Note deleted successfuly",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                          duration: const Duration(seconds: 2),
-                          backgroundColor: Colors.red.shade400,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      );
-                    },
-                    icon: const Icon(
-                      FontAwesomeIcons.trash,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Title + Delete Icon
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Text(
+                    note.title,
+                    style: const TextStyle(
+                      fontSize: 26,
                       color: Colors.black,
-                      size: 24,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                ],
-              ),
-              const SizedBox(height: 8),
+                ),
+                IconButton(
+                  onPressed: () {
+                    note.delete();
+                    BlocProvider.of<NotesCubit>(context).fetchAllNotes();
 
-              // Subtitle
-              Expanded(
-                child: Text(
-                  note.subTitle,
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.black.withOpacity(0.4),
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: const Row(
+                          children: [
+                            Icon(Icons.check, color: Colors.white),
+                            SizedBox(width: 20),
+                            Text(
+                              "Note deleted successfuly",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        duration: const Duration(seconds: 2),
+                        backgroundColor: Colors.red,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    );
+                  },
+                  icon: const Icon(
+                    FontAwesomeIcons.trash,
+                    color: Colors.black,
+                    size: 22,
                   ),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 5,
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 10),
+
+            // Subtitle (expands with text)
+            Text(
+              note.subTitle,
+              style: TextStyle(
+                fontSize: 18,
+                height: 1.4,
+                color: Colors.black.withValues(alpha: 0.6),
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
+            // Date
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Text(
+                formattedDate,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.black.withValues(alpha: 0.5),
                 ),
               ),
-
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Text(
-                  formattedDate,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.black.withOpacity(0.4),
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

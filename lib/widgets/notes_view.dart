@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app/widgets/add_note_bottom_sheet.dart';
@@ -18,7 +19,7 @@ class NotesView extends StatelessWidget {
               "Notes",
               style: TextStyle(
                 fontSize: 30,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w500,
                 color: Colors.white,
               ),
             ),
@@ -30,7 +31,11 @@ class NotesView extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 color: const Color(0xff323233),
               ),
-              child: const Icon(Icons.search, size: 25, color: Colors.white),
+              child: const Icon(
+                CupertinoIcons.search,
+                size: 25,
+                color: Colors.white,
+              ),
             ),
           ],
         ),
