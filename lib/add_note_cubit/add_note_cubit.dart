@@ -16,6 +16,7 @@ class AddNoteCubit extends Cubit<AddNoteState> {
 
   Color color = const Color(0xffDB3A34);
   addNote(NoteModel note) async {
+    // ignore: deprecated_member_use
     note.color = color.value;
     emit(AddNoteLoading());
     try {

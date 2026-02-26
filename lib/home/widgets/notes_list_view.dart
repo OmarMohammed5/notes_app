@@ -3,8 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:notes_app/add_note_cubit/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/add_note_cubit/notes_cubit/notes_state.dart';
+import 'package:notes_app/edit%20note/view/edit_note_view.dart';
 import 'package:notes_app/models/note_model.dart';
-import 'package:notes_app/widgets/custom_card.dart';
+import 'package:notes_app/home/widgets/custom_card.dart';
 
 class NotesListView extends StatelessWidget {
   const NotesListView({super.key});
@@ -28,7 +29,7 @@ class NotesListView extends StatelessWidget {
           );
         }
         return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16),
+          padding: const EdgeInsets.symmetric(vertical: 6),
           child: ListView.builder(
             itemCount: notes.length,
             physics: const BouncingScrollPhysics(),
@@ -38,7 +39,20 @@ class NotesListView extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 4),
                 child: CustomCard(
                   note: notes[index],
-                  color: Color(notes[index].color),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return EditNoteView(note: notes[index]);
+                        },
+                      ),
+                    );
+                  },
+                  onDelete: () {
+                    notes[index].delete();
+                    BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                  },
                 ),
               );
             },
