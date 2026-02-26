@@ -62,6 +62,6 @@ View the full note content with options to edit or delete.
 
 - Flutter  
 - Local Database (Hive)  
-- State Management  
+- State Management  (Cubit)
 - Clean Architecture  
-- Material Design  
+- Material Design
