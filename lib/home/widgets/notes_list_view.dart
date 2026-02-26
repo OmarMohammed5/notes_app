@@ -28,35 +28,32 @@ class NotesListView extends StatelessWidget {
             child: Lottie.asset("assets/empty.json", height: 300, width: 300),
           );
         }
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 6),
-          child: ListView.builder(
-            itemCount: notes.length,
-            physics: const BouncingScrollPhysics(),
-            padding: EdgeInsets.zero,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4),
-                child: CustomCard(
-                  note: notes[index],
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return EditNoteView(note: notes[index]);
-                        },
-                      ),
-                    );
-                  },
-                  onDelete: () {
-                    notes[index].delete();
-                    BlocProvider.of<NotesCubit>(context).fetchAllNotes();
-                  },
-                ),
-              );
-            },
-          ),
+        return ListView.builder(
+          itemCount: notes.length,
+          physics: const BouncingScrollPhysics(),
+          padding: EdgeInsets.zero,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4),
+              child: CustomCard(
+                note: notes[index],
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return EditNoteView(note: notes[index]);
+                      },
+                    ),
+                  );
+                },
+                onDelete: () {
+                  notes[index].delete();
+                  BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                },
+              ),
+            );
+          },
         );
       },
     );

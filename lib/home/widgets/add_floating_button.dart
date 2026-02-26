@@ -21,7 +21,7 @@ class AddFloatingButton extends StatelessWidget {
         },
         shape: const CircleBorder(),
         backgroundColor: const Color(0xff60ffd7),
-        child: const Icon(FontAwesomeIcons.plus, color: Colors.black),
+        child: const Icon(FontAwesomeIcons.penToSquare, color: Colors.black),
       ),
     );
   }
