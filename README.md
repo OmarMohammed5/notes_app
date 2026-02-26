@@ -1,16 +1,77 @@
-# notes_app
+# 📝 NoteFlow
 
-A new Flutter project.
+Organize your thoughts. Capture your ideas.
 
-## Getting Started
+A clean and modern note-taking application that allows users to create, edit, delete, and manage notes efficiently — with smooth navigation and a beautiful UI experience.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 📱 App Overview
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+NoteFlow helps you:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- ✍️ Create new notes
+- 📝 Edit existing notes
+- 🗑 Delete notes
+- 👁 View note details
+- 🌗 Switch between Light & Dark mode
+- 💾 Store notes locally
+
+---
+
+## 📸 Screenshots
+
+### 🏠 Home Screen
+
+Displays all saved notes in a clean card layout.
+
+![Home](assets/screenshots/Home.png)
+
+---
+
+### ✍️ Write Note Screen
+
+Create a new note by adding a title and detailed content.
+
+![Write Note](assets/screenshots/write_note.png)
+
+---
+
+### 👁 Note Details Screen
+
+View the full note content with options to edit or delete.
+
+![Display Note](assets/screenshots/display_note.png)
+
+---
+
+## 🚀 Features
+
+- Add Notes with Title & Content  
+- Edit Notes Anytime  
+- Delete Notes Instantly  
+- Persistent Local Storage  
+- Clean & Minimal UI  
+- Smooth Navigation Between Screens  
+- Light & Dark Theme Toggle  
+- Responsive Design  
+
+---
+
+## 🛠 Tech Stack
+
+- Flutter  
+- Local Database (Hive)  
+- State Management  
+- Clean Architecture  
+- Material Design  
+
+---
+
+## 📦 Installation
+
+```bash
+git clone https://github.com/your-username/noteflow.git
+cd noteflow
+flutter pub get
+flutter run
